@@ -1,13 +1,19 @@
 # Interrogation Cheat Sheet: Anomalous-Analytics-AI
 
-## 1. "Why did you choose this specific anomaly?"
-**Defense:** "Most computer vision security tools focus on property protection or petty rules. We built a digital duty-of-care system. Harassment, hazing, and spatial encroachment in campus blind spots represent critical student safety risks. Our system actively protects student welfare rather than just policing low-level infractions."
+## 1. Can it recognize what people/objects are doing?
+**The Defense:** "Yes, through spatial relationship analysis. It doesn't just see 'people'—it calculates the Intersection over Union (IoU) of their bounding boxes and measures the duration of their overlap. This allows us to classify complex behaviors like crowding, hazing, or spatial encroachment, rather than just basic movement."
 
-## 2. "How did you use Google Antigravity to build this?"
-**Defense:** "Google Antigravity serves as our central orchestration agent. Rather than manually chaining disjointed scripts, Antigravity coordinates the computer vision pipeline—linking YOLO bounding-box detection to our spatial overlap mathematics and enforcing strict output logging without code collision."
+## 2. Does it spot meaningful events?
+**The Defense:** "Yes. By intentionally ignoring standard movement and only triggering when predefined behavioral thresholds (like a 30-second localized grouping) are breached, the system filters out baseline noise and strictly alerts on high-risk, meaningful anomalies."
 
-## 3. "How do you track the 'Who' without facial recognition?"
-**Defense:** "Facial recognition introduces severe privacy risks and database overhead. We assign dynamic, persistent tracking IDs (Subject 1, Subject 2) to spatial bounding boxes within the video stream. This provides security personnel with actionable targets while preserving student privacy."
+## 3. Can it tell normal from abnormal behavior?
+**The Defense:** "Absolutely. Normal behavior is defined in our logic as fluid movement and standard conversational distance. Abnormal behavior is detected when our spatial distance matrix collapses and entities remain locked in a predefined zone beyond the acceptable time limit."
 
-## 4. THE FALLBACK (If live rendering lags or crashes)
-**Defense:** "Processing real-time bounding box distance matrixes locally within a 10-hour build window introduces frame latency on standard hardware. However, the logic pipeline is complete: boundary breaches trigger exact timestamped alerts. Given additional time, model quantization and GPU acceleration would resolve rendering latency."
+## 4. Does it track the same object across the video?
+**The Defense:** "Yes. We use a centroid-tracking approach tied to our YOLO bounding boxes. Once an entity enters the frame, it is assigned a persistent ID (e.g., 'Subject 1'). This ID is maintained as long as the entity remains in the camera's field of view, ensuring our alerts log the exact entities involved."
+
+## 5. Does it find objects accurately?
+**The Defense:** "Yes, we utilize YOLO (You Only Look Once) integrated with OpenCV. This provides highly accurate, real-time bounding box generation even in dynamic frames, serving as the stable foundational data layer for our Antigravity behavioral logic."
+
+## 6. Are events detected at the right time?
+**The Defense:** "Yes. Our Google Antigravity orchestration agent manages a rolling time window. The exact moment an interaction crosses our 30-second boundary threshold, a precise 'Who, What, When' alert is logged with the corresponding video timestamp, eliminating latency in incident reporting."
