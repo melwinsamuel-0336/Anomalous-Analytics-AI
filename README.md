@@ -26,12 +26,17 @@ The system generates a specific, actionable behavioral alert to prevent generic 
 ---
 
 ## System Architecture & Data Pipeline
-1. **Video Ingestion:** Raw MP4 scenario footage (Files strictly <100MB).
-2. **Entity Tracking:** Bounding boxes and movement trajectories mapped via YOLO/OpenCV.
-3. **Behavioral Logic:** Spatial distance, intersection-over-union (IoU), and time-in-zone counters calculated over a rolling 30-second window to establish intent.
-4. **Agent Orchestration:** Google Antigravity autonomously coordinates the tracking pipeline and alert generation.
+## System Architecture & Data Pipeline
 
----
+```mermaid
+graph TD
+    A[Roadside Camera Feed MP4] --> B[OpenCV / YOLO Vehicle Tracking]
+    B --> C[Vector & Velocity Calculation Engine]
+    C --> D{Anomaly Threshold Check}
+    D -->|Wrong-Way Trajectory| E[Trigger Safety Alert]
+    D -->|Velocity = 0 for >15s| E
+    E --> F[Google Antigravity Orchestrator]
+    F --> G[Structured Log: Subject, Action, Timestamp]
 
 ## Scope Note (10-Hour Hackathon Build)
 **Core Build (Completed):**
