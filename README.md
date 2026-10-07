@@ -24,8 +24,6 @@ The system generates a specific, actionable behavioral alert to prevent generic 
 * **Example:** `[ALERT] Subjects 2 and 3 engaged in Spatial Encroachment against Subject 1 for 30s at Video Timestamp 14:02.`
 
 ---
-
-## System Architecture & Data Pipeline
 ## System Architecture & Data Pipeline
 
 ```mermaid
