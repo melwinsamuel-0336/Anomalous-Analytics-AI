@@ -1,7 +1,3 @@
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
-![Google Antigravity](https://img.shields.io/badge/Google--Antigravity-Orchestrator-4285F4?style=for-the-badge&logo=google)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 # Interrogation Cheat Sheet: Anomalous-Analytics-AI
 
 ## 1. Can it recognize what people/objects are doing?
