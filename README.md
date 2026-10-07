@@ -1,55 +1,48 @@
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
-![Google Antigravity](https://img.shields.io/badge/Google--Antigravity-Orchestrator-4285F4?style=for-the-badge&logo=google)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-# Anomalous-Analytics-AI: Autonomous Behavior Analysis & Anomaly Detection System
+# Anomalous-Analytics-AI: Autonomous Traffic Anomaly & Safety System
 
 ## Overview
-Anomalous-Analytics-AI is an autonomous computer vision system designed to read and analyze complex behavioral patterns within a defined environment. Rather than simply logging basic movement, this system actively monitors spatial relationships, interaction durations, and localized anomalies to identify high-risk behaviors or severe deviations from normal activity in real-time.
+Anomalous-Analytics-AI is an autonomous computer vision system designed to monitor urban roadways and traffic intersections in real time. Rather than simple speed logging, this system actively identifies high-risk traffic anomalies—such as wrong-way driving, stalled vehicles in active lanes, and dangerous roadway obstructions—to reduce accident response times and improve road safety.
 
 Built using Google Antigravity and Python/OpenCV.
 
 ## Problem Statement 7: Autonomous Vision & Behavior Understanding
-This project strictly fulfills the requirements of PS07 by tracking entities, deeply analyzing their spatial behaviors over time, and explicitly reporting the **Subject (Who), Action (What), and Timestamp (When)** of an unusual event.
+This project strictly fulfills the requirements of PS07 by tracking vehicle entities, analyzing spatial trajectories, and explicitly reporting the **Subject (Who), Action (What), and Timestamp (When)** of an unusual event.
 
 ### 1. The Baseline (Normal Behavior)
-Subjects navigating the environment naturally, maintaining standard spatial boundaries, and exhibiting expected, routine activity levels without prolonged disruptions.
+Vehicles traveling continuously along designated lane vector pathways at standard flow speeds without stopping in active intersections or travel lanes.
 
 ### 2. The Anomaly (Unusual Event)
-A subject or group of subjects exhibiting irregular behavioral patterns—such as aggressive spatial encroachment, erratic movement paths, or prolonged, unauthorized clustering in a predefined zone for more than 30 seconds without dispersing.
+A vehicle trajectory moving against the authorized directional vector (Wrong-Way Driving) OR a vehicle remaining stationary (velocity = 0) within an active lane or intersection box for longer than 15 seconds (Stalled Vehicle / Lane Blockage).
 
 ### 3. The Output
-The system generates a specific, actionable behavioral alert to prevent generic false-positive warnings. 
+The system generates a specific, actionable alert to prevent generic false-positive warnings.
 * **Format:** `[ALERT] <Who> engaged in <What> at <When>.`
-* **Example:** `[ALERT] Subjects 2 and 3 engaged in Spatial Encroachment against Subject 1 for 30s at Video Timestamp 14:02.`
+* **Example:** `[ALERT] Vehicle 3 encroached/stalled in Active Flow Zone A for 15s at Video Timestamp 01:15.`
 
 ---
-## System Architecture & Data Pipeline
 
-```mermaid
-graph TD
-    A[Roadside Camera Feed MP4] --> B[OpenCV / YOLO Vehicle Tracking]
-    B --> C[Vector & Velocity Calculation Engine]
-    C --> D{Anomaly Threshold Check}
-    D -->|Wrong-Way Trajectory| E[Trigger Safety Alert]
-    D -->|Velocity = 0 for >15s| E
-    E --> F[Google Antigravity Orchestrator]
-    F --> G[Structured Log: Subject, Action, Timestamp]
+## System Architecture & Data Pipeline
+1. **Video Ingestion:** Raw MP4 footage from roadside surveillance feeds (Files strictly <100MB).
+2. **Entity Tracking:** Bounding boxes and velocity vectors mapped via YOLO/OpenCV.
+3. **Behavior Logic:** Directional vector comparison and stationary time counters calculated over a rolling window.
+4. **Agent Orchestration:** Google Antigravity autonomously coordinates the tracking pipeline and alert generation.
+
+---
 
 ## Scope Note (10-Hour Hackathon Build)
 **Core Build (Completed):**
-* Successfully tracks persistent identities in a single frame to establish behavioral continuity.
-* Accurately calculates spatial overlap and triggers alerts purely based on behavioral deviations over a 30-second timeline.
-* Outputs explicit Who/What/When logs for administrative review.
+* Successfully tracks up to 5 vehicle identities simultaneously in a single frame.
+* Accurately detects directional vector mismatches (wrong-way) and 15-second stationary breaches.
+* Outputs explicit Who/What/When logs for traffic administration review.
 
 **Attempted Stretch Goals (Abandoned for Scope):**
-* Attempted to integrate facial recognition for explicit identity logging, but abandoned it to ensure baseline tracking stability, preserve rendering speed, and respect data privacy constraints within the 10-hour limit.
+* Attempted to integrate Automatic License Plate Recognition (ALPR) for vehicle identification, but abandoned it to ensure real-time rendering stability and model speed within the 10-hour limit.
 
 ---
 
 ## Repository Structure
 * `/src` - Core Python tracking logic and Antigravity agent configurations.
-* `/data` - Compressed test footage (Baseline normal vs. Behavioral Anomaly scenarios).
+* `/data` - Compressed traffic test footage (Normal flow and Anomaly scenarios).
 * `/docs` - Evaluation rubrics, system architecture diagrams, and presentation notes.
 
 ---
